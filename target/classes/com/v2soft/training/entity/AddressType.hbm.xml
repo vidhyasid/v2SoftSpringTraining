@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Oct 9, 2019, 1:30:23 PM by Hibernate Tools 5.1.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="employee" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.vzsoft.training.entities.AddressType" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="address_type">
+        <id name="id" type="int">
+            <column name="Id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="type" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="Type" not-null="true" unique="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="employeeAddresses" optimistic-lock="true" sort="unsorted" table="employee_address">
+            <key on-delete="noaction">
+                <column name="Address_Type_Id" not-null="true"/>
+            </key>
+            <one-to-many class="com.vzsoft.training.entities.EmployeeAddress" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

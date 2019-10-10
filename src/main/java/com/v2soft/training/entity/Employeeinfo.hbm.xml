@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Oct 9, 2019, 1:30:23 PM by Hibernate Tools 5.1.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="employee" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.vzsoft.training.entities.Employeeinfo" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="employeeinfo">
+        <id name="employeeId" type="string">
+            <column length="12" name="Employee_Id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="firstName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="First_Name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="lastName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="Last_Name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="middleName" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="Middle_Name"/>
+        </property>
+        <property generated="never" lazy="false" name="dateOfBirth" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="Date_Of_Birth" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="passportNumber" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="Passport_Number"/>
+        </property>
+        <property generated="never" lazy="false" name="ssn" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="SSN" not-null="true" unique="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="employeeAddresses" optimistic-lock="true" sort="unsorted" table="employee_address">
+            <key on-delete="noaction">
+                <column length="20" name="Employee_Id" not-null="true"/>
+            </key>
+            <one-to-many class="com.vzsoft.training.entities.EmployeeAddress" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
